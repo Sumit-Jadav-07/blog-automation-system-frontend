@@ -1,0 +1,153 @@
+/* BlogReaderPage.css */
+.reader-page {
+  position: relative;
+  z-index: 1;
+  padding: 20px 0;
+}
+
+.reader-container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.reader-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.reader-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.reader-header {
+  margin-bottom: 32px;
+}
+
+.reader-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.reader-summary {
+  font-size: 1.15rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.reader-date {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.reader-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 32px 0;
+}
+
+.reader-content {
+  font-size: 1.1rem;
+  line-height: 1.85;
+}
+
+.reader-meta {
+  display: grid;
+  gap: 24px;
+}
+
+.reader-meta-section {
+  display: grid;
+  gap: 8px;
+}
+
+.reader-meta-section p {
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.reader-keywords {
+  font-style: italic;
+}
+
+.reader-skeleton {
+  display: grid;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.skeleton-line {
+  height: 16px;
+  border-radius: 8px;
+  background: rgba(81, 56, 30, 0.1);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-title {
+  height: 32px;
+  width: 70%;
+}
+
+.skeleton-subtitle {
+  height: 20px;
+  width: 50%;
+}
+
+.skeleton-short {
+  width: 40%;
+}
+
+@media (max-width: 640px) {
+  .reader-container {
+    padding: 24px;
+    border-radius: 22px;
+  }
+  .reader-title {
+    font-size: 1.6rem;
+  }
+  .reader-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .reader-top-actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .reader-container {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,106 @@
+/* BlogHistory.css */
+.section-heading,
+.preview-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px; /* Room for scrollbar */
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 250, 0.82);
+  transition: border-color 200ms ease, background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.history-item:hover {
+  border-color: rgba(12, 122, 94, 0.24);
+  background: rgba(250, 255, 252, 0.94);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.history-item.selected {
+  border-color: rgba(12, 122, 94, 0.35);
+  background: rgba(245, 255, 250, 0.96);
+  box-shadow: 0 0 0 3px rgba(12, 122, 94, 0.08);
+}
+
+.history-item-button {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.history-main,
+.history-meta {
+  display: grid;
+  gap: 6px;
+}
+
+.history-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.history-topic,
+.history-meta span {
+  font-size: 0.92rem;
+}
+
+.history-topic {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.history-read-link {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: rgba(12, 122, 94, 0.08);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 200ms ease, transform 160ms ease;
+}
+
+.history-read-link:hover {
+  background: rgba(12, 122, 94, 0.16);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .history-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .history-read-link {
+    text-align: center;
+    margin: 0 12px 8px;
+  }
+}

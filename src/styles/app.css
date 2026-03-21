@@ -1,0 +1,136 @@
+/*
+ * app.css
+ *
+ * Global styles, variables, typography, and animations.
+ * Component-specific styles have been perfectly split into individual modules.
+ */
+
+/* ============================================
+   1. CSS Variables — our color palette & tokens
+   Keep the warm, earthy theme throughout
+   ============================================ */
+:root {
+  color-scheme: light;
+  --bg: #f4ede1;
+  --panel: rgba(255, 249, 240, 0.86);
+  --panel-strong: #fff9ef;
+  --line: rgba(81, 56, 30, 0.14);
+  --text: #2e2419;
+  --muted: #6e5a45;
+  --accent: #0c7a5e;
+  --accent-dark: #085746;
+  --danger: #c03737;
+  --danger-dark: #9f2121;
+  --shadow: 0 22px 60px rgba(61, 41, 20, 0.12);
+  --shadow-sm: 0 4px 16px rgba(61, 41, 20, 0.08);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --radius-pill: 999px;
+  --font-sans: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+/* ============================================
+   2. Reset & Base styles
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(12, 122, 94, 0.16), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(190, 111, 46, 0.12), transparent 28%),
+    linear-gradient(180deg, #f7f0e5 0%, #efe4d4 100%);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+button,
+textarea,
+input {
+  font: inherit;
+}
+
+/* Headings use serif fonts for that editorial feel */
+h1, h2 {
+  font-family: var(--font-serif);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
+  line-height: 1.05;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* Muted body text */
+.card-copy, .empty-copy {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ============================================
+   3. Animations & Keyframes
+   These make the app feel alive and responsive
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes staggerIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.fade-in { animation: fadeIn 400ms ease-out both; }
+.slide-up { animation: slideUp 500ms ease-out both; }
+.stagger-item { animation: staggerIn 400ms ease-out both; }
+
+/* Error banners */
+.error-banner {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(192, 55, 55, 0.1);
+  color: #892424;
+  animation: fadeIn 300ms ease-out;
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+}

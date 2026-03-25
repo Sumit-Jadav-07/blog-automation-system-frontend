@@ -1,46 +1,52 @@
-/**
- * BlogForm.jsx
- *
- * This is the form where users type a topic and hit "Generate Blog".
- * The AI pipeline then researches, writes, and optimizes a full blog post.
- *
- * Props:
- *   topic        → The current text in the textarea
- *   onTopicChange→ Called when the user types something
- *   onSubmit     → Called when the form is submitted
- *   loading      → True while the AI is generating (disables the button)
- */
-
+import { motion } from "framer-motion";
+import { Loader2, Sparkles } from "lucide-react";
 import "./BlogForm.css";
 
 export default function BlogForm({ topic, onTopicChange, onSubmit, loading }) {
   return (
-    <form className="composer-card slide-up" onSubmit={onSubmit}>
-      {/* Small label above the title */}
-      <div className="eyebrow">Generate</div>
-      <h1>AI Blog Automation Studio</h1>
-      <p className="card-copy">
-        Enter a topic and let the CrewAI pipeline research, write, optimize, edit, and prepare
-        it for Medium.
-      </p>
+    <motion.form
+      className="composer-card glass"
+      onSubmit={onSubmit}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+    >
+      <div className="form-header">
+        <span className="eyebrow">AI Generation</span>
+        <h1>AI Blog Automation Studio</h1>
+        <p className="card-copy">
+          Feed a topic and watch the automation pipeline research, draft, and polish a full Medium-ready article.
+        </p>
+      </div>
 
-      {/* Topic input — where the magic starts */}
-      <label className="field-label" htmlFor="topic">
-        Topic
-      </label>
-      <textarea
-        id="topic"
-        className="topic-input"
-        value={topic}
-        onChange={(event) => onTopicChange(event.target.value)}
-        placeholder="Example: How AI agents are reshaping startup content operations in 2026"
-        rows={4}
-      />
+      <div className="floating-field">
+        <textarea
+          id="topic"
+          className="topic-input"
+          value={topic}
+          onChange={(event) => onTopicChange(event.target.value)}
+          placeholder="Example: How AI agents are reshaping startup content operations in 2026"
+          rows={4}
+        />
+        <label htmlFor="topic">Topic</label>
+        <div className="field-hint">Use a specific angle; the studio adds outline, SEO, and keywords automatically.</div>
+      </div>
 
-      {/* Generate button — disabled while loading or if the topic is empty */}
-      <button className="primary-button" type="submit" disabled={loading || !topic.trim()}>
-        {loading ? "Generating..." : "Generate Blog"}
-      </button>
-    </form>
+      <div className="form-actions">
+        {loading ? (
+          <div className="typing-indicator" aria-hidden="true">
+            <span className="dot" />
+            <span className="dot" />
+            <span className="dot" />
+          </div>
+        ) : (
+          <div className="field-hint">Autogenerates outline, keywords, and tags.</div>
+        )}
+        <button className="primary-button" type="submit" disabled={loading || !topic.trim()}>
+          {loading ? <Loader2 className="spinner" size={18} /> : <Sparkles size={18} />} 
+          {loading ? "Generating" : "Generate Blog"}
+        </button>
+      </div>
+    </motion.form>
   );
 }

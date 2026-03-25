@@ -1,35 +1,79 @@
-/**
- * Navbar.jsx
- *
- * This is the top navigation bar that shows on every page.
- * It has the app name on the left and navigation links on the right.
- * The current page link gets highlighted so users always know where they are.
- */
-
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, Moon, Sparkles, Sun, X } from "lucide-react";
+import clsx from "clsx";
+import { useTheme } from "../context/ThemeContext";
 import "./Navbar.css";
 
 export default function Navbar() {
-  return (
-    <nav className="navbar">
-      {/* App brand / logo area */}
-      <NavLink to="/" className="navbar-brand">
-        <span className="navbar-icon">✦</span>
-        AI Blog Studio
-      </NavLink>
+  const { theme, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-      {/* Navigation links — NavLink automatically adds "active" class */}
-      <div className="navbar-links">
-        <NavLink to="/" end className="nav-link">
-          Dashboard
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  const linkClass = ({ isActive }) =>
+    clsx("nav-link", isActive && "nav-link-active");
+
+  return (
+    <header className="navbar-shell">
+      <nav className="navbar glass">
+        <NavLink to="/" className="navbar-brand" aria-label="AI Blog Automation Studio">
+          <span className="brand-icon">
+            <Sparkles size={18} />
+          </span>
+          <span className="brand-text">AI Blog Studio</span>
         </NavLink>
-        <NavLink to="/login" className="nav-link">
-          Login
-        </NavLink>
-        <NavLink to="/signup" className="nav-link nav-link-accent">
-          Sign Up
-        </NavLink>
-      </div>
-    </nav>
+
+        <div className="navbar-right">
+          <div className="navbar-links">
+            <NavLink to="/" end className={linkClass}>
+              Dashboard
+            </NavLink>
+            <NavLink to="/login" className={linkClass}>
+              Login
+            </NavLink>
+            <NavLink to="/signup" className={linkClass}>
+              Sign Up
+            </NavLink>
+          </div>
+
+          <button className="icon-button theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
+          <button className="icon-button hamburger" onClick={() => setOpen((p) => !p)} aria-label="Toggle menu">
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="mobile-drawer glass"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.18 }}
+          >
+            <div className="mobile-links">
+              <NavLink to="/" end className={linkClass}>
+                Dashboard
+              </NavLink>
+              <NavLink to="/login" className={linkClass}>
+                Login
+              </NavLink>
+              <NavLink to="/signup" className={linkClass}>
+                Sign Up
+              </NavLink>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

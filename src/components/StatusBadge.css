@@ -1,58 +1,20 @@
-/* StatusBadge.css */
 .status-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 80px;
-  padding: 6px 12px;
+  gap: 6px;
+  padding: 6px 10px;
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
   font-weight: 700;
   text-transform: capitalize;
-  transition: transform 200ms ease;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  color: var(--text);
+  animation: bounce 1.8s ease-in-out infinite;
 }
+.status-badge::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: currentColor; box-shadow: 0 0 0 6px color-mix(in srgb, currentColor 16%, transparent); opacity: 0.9; }
+.status-draft { color: #22c55e; }
+.status-generating, .status-publishing { color: #f59e0b; animation-delay: 0.2s; }
+.status-published { color: #3b82f6; }
+.status-failed { color: #ef4444; animation: none; }
 
-.status-draft {
-  background: rgba(12, 122, 94, 0.12);
-  color: var(--accent-dark);
-}
-
-.status-generating,
-.status-publishing {
-  background: rgba(190, 111, 46, 0.16);
-  color: #9b581e;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.status-published {
-  background: rgba(39, 92, 179, 0.14);
-  color: #1f4a91;
-}
-
-.status-failed {
-  background: rgba(192, 55, 55, 0.12);
-  color: var(--danger-dark);
-}
-
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  background: rgba(190, 111, 46, 0.12);
-  color: #8a521d;
-  font-size: 0.84rem;
-  font-weight: 700;
-  transition: transform 160ms ease, background 160ms ease;
-}
-
-.tag-chip:hover {
-  transform: translateY(-1px);
-  background: rgba(190, 111, 46, 0.2);
-}
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }

@@ -1,37 +1,48 @@
 /**
  * App.jsx
  *
- * This is the root component of the entire app. It sets up:
- *   - The navigation bar (shows on every page)
- *   - The routes (which page to show based on the URL)
- *
- * Routes:
- *   /        → Dashboard (blog generator + history + preview)
- *   /login   → Login page
- *   /signup  → Signup page
- *   /blog/:id → Full blog reader page
+ * Root shell with animated page transitions and global navigation.
+ * All backend interactions live inside the individual pages; we only
+ * wrap them with motion + layout here.
  */
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import BlogReaderPage from "./pages/BlogReaderPage";
 
+const pageMotion = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -12 },
+  transition: { duration: 0.25, ease: "easeOut" },
+};
+
+function PageShell({ children }) {
+  return (
+    <motion.div className="page-shell" {...pageMotion}>
+      {children}
+    </motion.div>
+  );
+}
+
 export default function App() {
+  const location = useLocation();
+
   return (
     <div className="app-shell">
-      {/* Navigation bar — always visible at the top */}
       <Navbar />
-
-      {/* Page content — changes based on the current URL */}
-      <Routes>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/blog/:id" element={<BlogReaderPage />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageShell><DashboardPage /></PageShell>} />
+          <Route path="/login" element={<PageShell><LoginPage /></PageShell>} />
+          <Route path="/signup" element={<PageShell><SignupPage /></PageShell>} />
+          <Route path="/blog/:id" element={<PageShell><BlogReaderPage /></PageShell>} />
+        </Routes>
+      </AnimatePresence>
     </div>
   );
 }

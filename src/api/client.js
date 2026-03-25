@@ -9,7 +9,6 @@
  *   fetchBlogs()       → Get the list of all blogs
  *   fetchBlog(id)      → Get a single blog by its ID
  *   generateBlog(topic)→ Ask the AI to create a new blog about a topic
- *   publishBlog(id)    → Publish a blog to Medium
  *   deleteBlog(id)     → Permanently delete a blog
  */
 
@@ -28,29 +27,24 @@ const api = axios.create({
 // Get all blogs — used on the dashboard to show the history list
 export async function fetchBlogs() {
   const { data } = await api.get("/blogs");
+  console.log("Fetched blogs:", data);
   return data;
 }
 
 // Get one specific blog by ID — used when clicking a blog or opening the reader page
 export async function fetchBlog(blogId) {
-  const { data } = await api.get(`/blog/${blogId}`);
+  const { data } = await api.get(`/blogs/${blogId}`);
   return data;
 }
 
 // Ask the AI pipeline to generate a new blog from a topic
 export async function generateBlog(topic) {
-  const { data } = await api.post("/generate-blog", { topic });
-  return data;
-}
-
-// Publish a generated blog to Medium
-export async function publishBlog(blogId) {
-  const { data } = await api.post("/publish", { blog_id: blogId });
+  const { data } = await api.post(`/blogs/generate?topic=${encodeURIComponent(topic)}`);
   return data;
 }
 
 // Permanently delete a blog — this can't be undone!
 export async function deleteBlog(blogId) {
-  const { data } = await api.delete(`/blog/${blogId}`);
+  const { data } = await api.delete(`/blogs/${blogId}`);
   return data;
 }

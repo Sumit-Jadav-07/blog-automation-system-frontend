@@ -1,46 +1,39 @@
-/**
- * DeleteConfirmModal.jsx
- *
- * This is the scary delete confirmation popup — works just like GitHub's
- * repo deletion dialog. The user has to type the exact blog title into
- * an input field before the delete button becomes active.
- *
- * This prevents accidental deletions because you really have to mean it.
- */
-
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { ShieldAlert, X } from "lucide-react";
 import "./DeleteConfirmModal.css";
 
 export default function DeleteConfirmModal({ blogTitle, onConfirm, onCancel }) {
-  // Track what the user types in the confirmation input
   const [typedName, setTypedName] = useState("");
-
-  // Only enable the delete button when the typed text matches the blog title exactly
   const isMatch = typedName === blogTitle;
 
   return (
-    // The dark overlay behind the modal — clicking it cancels the action
-    <div className="modal-overlay fade-in" onClick={onCancel}>
-      {/* The actual modal box — stop clicks from bubbling to the overlay */}
-      <div className="modal-box slide-up" onClick={(e) => e.stopPropagation()}>
-        {/* Warning icon and title */}
+    <div className="modal-overlay" onClick={onCancel}>
+      <motion.div
+        className="modal-box glass"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.96, y: 6 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 6 }}
+        transition={{ duration: 0.2 }}
+      >
         <div className="modal-header">
-          <span className="modal-warning-icon">⚠</span>
-          <h2>Are you sure?</h2>
+          <div className="modal-icon">
+            <ShieldAlert size={18} />
+          </div>
+          <div>
+            <h2>Delete blog?</h2>
+            <p className="modal-description">This action cannot be undone.</p>
+          </div>
+          <button className="icon-button" onClick={onCancel} aria-label="Close dialog">
+            <X size={16} />
+          </button>
         </div>
 
-        <p className="modal-description">
-          This action <strong>cannot be undone</strong>. This will permanently
-          delete the blog post and all its content.
-        </p>
-
-        {/* The confirmation instruction */}
         <p className="modal-instruction">
-          Please type <strong className="modal-blog-name">{blogTitle}</strong> to
-          confirm.
+          Type <strong className="modal-blog-name">{blogTitle}</strong> to confirm.
         </p>
 
-        {/* Input where user types the blog title to confirm */}
         <input
           className="modal-input"
           type="text"
@@ -50,7 +43,6 @@ export default function DeleteConfirmModal({ blogTitle, onConfirm, onCancel }) {
           autoFocus
         />
 
-        {/* Action buttons */}
         <div className="modal-actions">
           <button className="secondary-button" type="button" onClick={onCancel}>
             Cancel
@@ -61,10 +53,10 @@ export default function DeleteConfirmModal({ blogTitle, onConfirm, onCancel }) {
             disabled={!isMatch}
             onClick={onConfirm}
           >
-            I understand, delete this blog
+            Delete permanently
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

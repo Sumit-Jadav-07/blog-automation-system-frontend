@@ -1,54 +1,60 @@
-/**
- * BlogHistory.jsx
- *
- * This shows the list of all previously generated blogs in the sidebar.
- * Each blog shows its title, topic, status badge, and creation date.
- *
- * Clicking on a blog selects it and shows it in the preview panel.
- * There's also a "Read" link that takes you to the full blog reader page.
- *
- * Props:
- *   blogs          → Array of blog objects from the server
- *   selectedBlogId → ID of the currently selected blog (gets highlighted)
- *   onSelect       → Called when a blog is clicked
- */
-
-import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { CalendarClock, Inbox } from "lucide-react";
 import StatusBadge from "./StatusBadge";
 import "./BlogHistory.css";
 
 export default function BlogHistory({ blogs, selectedBlogId, onSelect }) {
+  const empty = !blogs || blogs.length === 0;
+
   return (
-    <section className="history-card slide-up">
+    <section className="history-card glass">
       <div className="section-heading">
         <div>
           <div className="eyebrow">History</div>
           <h2>Generated Blogs</h2>
+          <p className="card-copy">Tap a card to preview. Newest appears first.</p>
+        </div>
+        <div className="history-count">
+          <CalendarClock size={16} />
+          <span>{blogs?.length || 0} saved</span>
         </div>
       </div>
 
-      {/* Blog list — or a friendly message if there are none yet */}
-      <div className="history-list">
-        {blogs.length === 0 ? (
-          <p className="empty-copy">No blogs yet. Generate your first topic to populate the queue.</p>
+      <div className="history-grid">
+        {empty ? (
+          <div className="empty-history">
+            <div className="empty-icon">
+              <Inbox size={22} />
+            </div>
+            <p className="empty-title">No blogs yet</p>
+            <p className="empty-copy">Generate your first idea to see it appear here.</p>
+          </div>
         ) : (
-          blogs.map((blog, index) => (
-            <Link
-              to={`/blog/${blog.id}`}
-              key={blog.id}
-              className={`history-item stagger-item ${selectedBlogId === blog.id ? "selected" : ""}`}
-              style={{ animationDelay: `${index * 60}ms`, textDecoration: 'none', display: 'block', color: 'inherit' }}
-            >
-              <div className="history-main">
-                <div className="history-title">{blog.title || blog.topic}</div>
+          <AnimatePresence>
+            {blogs.map((blog, index) => (
+              <motion.button
+                key={blog.id}
+                type="button"
+                className={`history-item ${selectedBlogId === blog.id ? "selected" : ""}`}
+                onClick={() => onSelect(blog.id)}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ delay: index * 0.05, duration: 0.2 }}
+              >
+                <div className="history-item-top">
+                  <div className="history-title">{blog.title || blog.topic}</div>
+                  <StatusBadge status={blog.status} />
+                </div>
                 <div className="history-topic">{blog.topic}</div>
-              </div>
-              <div className="history-meta">
-                <StatusBadge status={blog.status} />
-                <span>{new Date(blog.created_at).toLocaleString()}</span>
-              </div>
-            </Link>
-          ))
+                <div className="history-meta">
+                  <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
+                  <span className="history-dot" />
+                  <span className="history-subtle">{blog.summary ? "Summary ready" : "Draft"}</span>
+                </div>
+              </motion.button>
+            ))}
+          </AnimatePresence>
         )}
       </div>
     </section>

@@ -33,16 +33,22 @@ export default function App() {
   const location = useLocation();
 
   return (
+    <>
+    <Navbar />
+    <AnimatePresence mode="wait">
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
+    </AnimatePresence>
     <div className="app-shell">
-      <Navbar />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageShell><DashboardPage /></PageShell>} />
-          <Route path="/login" element={<PageShell><LoginPage /></PageShell>} />
-          <Route path="/signup" element={<PageShell><SignupPage /></PageShell>} />
           <Route path="/blog/:id" element={<PageShell><BlogReaderPage /></PageShell>} />
         </Routes>
       </AnimatePresence>
     </div>
+    </>
   );
 }

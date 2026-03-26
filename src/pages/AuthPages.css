@@ -1,19 +1,169 @@
-.auth-page {
-  min-height: calc(100vh - 80px);
-  display: grid;
-  place-items: center;
-  padding: 60px 16px;
-  position: relative;
+/* ── Split ratio variable ── */
+:root {
+  --auth-split: 45.45%;   /* 5fr / (5fr + 6fr) */
+  --navbar-h: 60px;       /* apni navbar ki height yahan daalo */
 }
+
+/* ── Layout ── */
+.auth-page {
+  min-height: 100vh;
+  position: relative;     /* grid nahi — ab fixed panel use karega */
+}
+
+/* ── Left Brand — FIXED: top se bottom tak hamesha ── */
+.auth-brand {
+  position: fixed;
+  left: 0;
+  top: 0;                              /* navbar ke PEECHE se shuru */
+  width: var(--auth-split);
+  height: 100vh;                       /* hamesha exactly full screen */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: calc(var(--navbar-h) + 48px) 52px 52px;   /* navbar clear karo */
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--accent) 22%, var(--bg-strong)),
+    color-mix(in srgb, var(--accent-2) 12%, var(--bg-strong))
+  );
+  border-right: 1px solid var(--line);
+  z-index: 1;                          /* navbar (z:100) ke neeche rahe */
+}
+
+.auth-brand-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 30%, transparent),
+    transparent 70%
+  );
+  bottom: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.auth-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.auth-brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 24px var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.auth-brand-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.auth-brand h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+
+.auth-brand > p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 300px;
+  margin: 0 0 36px;
+}
+
+.auth-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.auth-feature-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  flex-shrink: 0;
+}
+
+/* ── Right Form Panel ── */
+.auth-form-panel {
+  margin-left: var(--auth-split);      /* fixed panel ke barabar space */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--navbar-h) + 48px) 64px 60px;
+}
+
 .auth-card {
-  width: min(440px, 94vw);
-  padding: 22px;
+  width: 100%;
+  max-width: 380px;
   display: grid;
   gap: 12px;
 }
-.auth-form { display: grid; gap: 12px; margin-top: 8px; }
-.auth-input { height: 46px; }
-.auth-button { width: 100%; justify-content: center; }
-.auth-switch { color: var(--muted); text-align: center; }
+
+.auth-card h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.auth-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.auth-input  { height: 46px; }
+.auth-button { width: 100%; justify-content: center; margin-top: 4px; }
+
+.auth-switch {
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
 .auth-switch a { font-weight: 700; }
-.password-mismatch { color: var(--danger); margin: 0; }
+
+.password-mismatch {
+  color: var(--danger);
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .auth-brand {
+    display: none;
+  }
+  .auth-form-panel {
+    margin-left: 0;
+    padding: calc(var(--navbar-h) + 32px) 24px 48px;
+    align-items: flex-start;
+  }
+}

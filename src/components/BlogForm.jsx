@@ -15,7 +15,7 @@ export default function BlogForm({ topic, onTopicChange, onSubmit, loading }) {
         <span className="eyebrow">AI Generation</span>
         <h1>AI Blog Automation Studio</h1>
         <p className="card-copy">
-          Feed a topic and watch the automation pipeline research, draft, and polish a full Medium-ready article.
+          Feed a topic and watch the automation pipeline research, draft, and polish a full Plateform-ready article.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default function BlogForm({ topic, onTopicChange, onSubmit, loading }) {
           <div className="field-hint">Autogenerates outline, keywords, and tags.</div>
         )}
         <button className="primary-button" type="submit" disabled={loading || !topic.trim()}>
-          {loading ? <Loader2 className="spinner" size={18} /> : <Sparkles size={18} />} 
+          {loading ? <Loader2 className="spinner" size={18} /> : <Sparkles size={18} />}
           {loading ? "Generating" : "Generate Blog"}
         </button>
       </div>

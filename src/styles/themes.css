@@ -1,0 +1,315 @@
+/* ================================================================
+   7 Color Palettes — Light + Dark har ek ke liye
+   Usage: document.documentElement.setAttribute('data-palette','ocean')
+================================================================ */
+
+/* ── 1. AURORA | Purple × Cyan  (your current / default) ── */
+:root,
+:root[data-palette='aurora'] {
+  color-scheme: light;
+  --bg:           #f8fafc;
+  --bg-strong:    #ffffff;
+  --panel:        rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text:         #0f172a;
+  --muted:        #475569;
+  --accent:       #6366f1;
+  --accent-2:     #3b82f6;
+  --accent-3:     #22d3ee;
+  --accent-glow:  rgba(99, 102, 241, 0.32);
+  --danger:       #ef4444;
+  --line:         rgba(15, 23, 42, 0.12);
+  --shadow:       0 18px 60px rgba(99, 102, 241, 0.14);
+  --blob-1:       rgba(99, 102, 241, 0.12);
+  --blob-2:       rgba(34, 211, 238, 0.18);
+  --blob-3:       rgba(99, 102, 241, 0.10);
+  --glow-l:       #6366f1;
+  --glow-r:       #22d3ee;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+:root[data-theme='dark'],
+:root[data-palette='aurora'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg:           #0f0f23;
+  --bg-strong:    #1a1a2e;
+  --panel:        rgba(26, 26, 46, 0.75);
+  --panel-strong: rgba(26, 26, 46, 0.92);
+  --text:         #e2e8f0;
+  --muted:        #a8b3cf;
+  --accent:       #8b5cf6;
+  --accent-2:     #22d3ee;
+  --accent-3:     #6366f1;
+  --accent-glow:  rgba(139, 92, 246, 0.35);
+  --danger:       #f87171;
+  --line:         rgba(255, 255, 255, 0.08);
+  --shadow:       0 18px 60px rgba(0, 0, 0, 0.45);
+  --blob-1:       rgba(139, 92, 246, 0.15);
+  --blob-2:       rgba(34, 211, 238, 0.12);
+  --blob-3:       rgba(99, 102, 241, 0.10);
+  --glow-l:       #8b5cf6;
+  --glow-r:       #22d3ee;
+}
+
+/* ── 2. OCEAN | Sky Blue × Teal ── */
+:root[data-palette='ocean'] {
+  color-scheme: light;
+  --bg:           #f0f9ff;
+  --bg-strong:    #ffffff;
+  --panel:        rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text:         #0c2340;
+  --muted:        #2e6a8a;
+  --accent:       #0ea5e9;
+  --accent-2:     #06b6d4;
+  --accent-3:     #10b981;
+  --accent-glow:  rgba(14, 165, 233, 0.30);
+  --danger:       #ef4444;
+  --line:         rgba(12, 35, 64, 0.12);
+  --shadow:       0 18px 60px rgba(14, 165, 233, 0.14);
+  --blob-1:       rgba(14, 165, 233, 0.13);
+  --blob-2:       rgba(6, 182, 212, 0.18);
+  --blob-3:       rgba(16, 185, 129, 0.10);
+  --glow-l:       #0ea5e9;
+  --glow-r:       #06b6d4;
+}
+:root[data-palette='ocean'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg:           #020d1a;
+  --bg-strong:    #071a2e;
+  --panel:        rgba(7, 26, 46, 0.78);
+  --panel-strong: rgba(7, 26, 46, 0.94);
+  --text:         #cce8f8;
+  --muted:        #5a9ab8;
+  --accent:       #38bdf8;
+  --accent-2:     #22d3ee;
+  --accent-3:     #34d399;
+  --accent-glow:  rgba(56, 189, 248, 0.30);
+  --danger:       #f87171;
+  --line:         rgba(255, 255, 255, 0.08);
+  --shadow:       0 18px 60px rgba(0, 0, 0, 0.50);
+  --blob-1:       rgba(56, 189, 248, 0.12);
+  --blob-2:       rgba(34, 211, 238, 0.14);
+  --blob-3:       rgba(52, 211, 153, 0.08);
+  --glow-l:       #0284c7;
+  --glow-r:       #0891b2;
+}
+
+/* ── 3. SUNSET | Orange × Rose ── */
+:root[data-palette='sunset'] {
+  color-scheme: light;
+  --bg:           #fff7f0;
+  --bg-strong:    #ffffff;
+  --panel:        rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text:         #1c0a00;
+  --muted:        #7c4a2d;
+  --accent:       #f97316;
+  --accent-2:     #f43f5e;
+  --accent-3:     #fbbf24;
+  --accent-glow:  rgba(249, 115, 22, 0.30);
+  --danger:       #dc2626;
+  --line:         rgba(28, 10, 0, 0.12);
+  --shadow:       0 18px 60px rgba(249, 115, 22, 0.14);
+  --blob-1:       rgba(249, 115, 22, 0.13);
+  --blob-2:       rgba(244, 63, 94, 0.15);
+  --blob-3:       rgba(251, 191, 36, 0.10);
+  --glow-l:       #f97316;
+  --glow-r:       #f43f5e;
+}
+:root[data-palette='sunset'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg:           #1a0a00;
+  --bg-strong:    #2c1200;
+  --panel:        rgba(44, 18, 0, 0.78);
+  --panel-strong: rgba(44, 18, 0, 0.94);
+  --text:         #fde8d0;
+  --muted:        #b07050;
+  --accent:       #fb923c;
+  --accent-2:     #fb7185;
+  --accent-3:     #fcd34d;
+  --accent-glow:  rgba(251, 146, 60, 0.30);
+  --danger:       #f87171;
+  --line:         rgba(255, 255, 255, 0.08);
+  --shadow:       0 18px 60px rgba(0, 0, 0, 0.50);
+  --blob-1:       rgba(251, 146, 60, 0.14);
+  --blob-2:       rgba(251, 113, 133, 0.12);
+  --blob-3:       rgba(252, 211, 77, 0.08);
+  --glow-l:       #c2410c;
+  --glow-r:       #be123c;
+}
+
+/* ── 4. FOREST | Emerald × Lime ── */
+:root[data-palette='forest'] {
+  color-scheme: light;
+  --bg:           #f0fdf4;
+  --bg-strong:    #ffffff;
+  --panel:        rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text:         #052e16;
+  --muted:        #2d6a4f;
+  --accent:       #10b981;
+  --accent-2:     #059669;
+  --accent-3:     #84cc16;
+  --accent-glow:  rgba(16, 185, 129, 0.28);
+  --danger:       #ef4444;
+  --line:         rgba(5, 46, 22, 0.12);
+  --shadow:       0 18px 60px rgba(16, 185, 129, 0.14);
+  --blob-1:       rgba(16, 185, 129, 0.13);
+  --blob-2:       rgba(5, 150, 105, 0.15);
+  --blob-3:       rgba(132, 204, 22, 0.10);
+  --glow-l:       #10b981;
+  --glow-r:       #84cc16;
+}
+:root[data-palette='forest'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg:           #021a0a;
+  --bg-strong:    #062614;
+  --panel:        rgba(6, 38, 20, 0.80);
+  --panel-strong: rgba(6, 38, 20, 0.95);
+  --text:         #d1fae5;
+  --muted:        #6ee7b7;
+  --accent:       #34d399;
+  --accent-2:     #6ee7b7;
+  --accent-3:     #a3e635;
+  --accent-glow:  rgba(52, 211, 153, 0.28);
+  --danger:       #f87171;
+  --line:         rgba(255, 255, 255, 0.08);
+  --shadow:       0 18px 60px rgba(0, 0, 0, 0.50);
+  --blob-1:       rgba(52, 211, 153, 0.12);
+  --blob-2:       rgba(110, 231, 183, 0.10);
+  --blob-3:       rgba(163, 230, 53, 0.08);
+  --glow-l:       #065f46;
+  --glow-r:       #3f6212;
+}
+
+/* ── 5. SAKURA | Pink × Violet ── */
+:root[data-palette='sakura'] {
+  color-scheme: light;
+  --bg:           #fdf2f8;
+  --bg-strong:    #ffffff;
+  --panel:        rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text:         #1a0212;
+  --muted:        #7e3469;
+  --accent:       #ec4899;
+  --accent-2:     #a855f7;
+  --accent-3:     #f43f5e;
+  --accent-glow:  rgba(236, 72, 153, 0.30);
+  --danger:       #dc2626;
+  --line:         rgba(26, 2, 18, 0.12);
+  --shadow:       0 18px 60px rgba(236, 72, 153, 0.14);
+  --blob-1:       rgba(236, 72, 153, 0.13);
+  --blob-2:       rgba(168, 85, 247, 0.15);
+  --blob-3:       rgba(244, 63, 94, 0.10);
+  --glow-l:       #ec4899;
+  --glow-r:       #a855f7;
+}
+:root[data-palette='sakura'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg:           #1a0212;
+  --bg-strong:    #280322;
+  --panel:        rgba(40, 3, 34, 0.80);
+  --panel-strong: rgba(40, 3, 34, 0.95);
+  --text:         #fce7f3;
+  --muted:        #d08aaf;
+  --accent:       #f472b6;
+  --accent-2:     #c084fc;
+  --accent-3:     #fb7185;
+  --accent-glow:  rgba(244, 114, 182, 0.30);
+  --danger:       #f87171;
+  --line:         rgba(255, 255, 255, 0.08);
+  --shadow:       0 18px 60px rgba(0, 0, 0, 0.50);
+  --blob-1:       rgba(244, 114, 182, 0.14);
+  --blob-2:       rgba(192, 132, 252, 0.12);
+  --blob-3:       rgba(251, 113, 133, 0.08);
+  --glow-l:       #9d174d;
+  --glow-r:       #6b21a8;
+}
+
+/* ── 6. MIDNIGHT | Deep Blue × Gold ── */
+:root[data-palette='midnight'] {
+  color-scheme: light;
+  --bg:           #f1f5f9;
+  --bg-strong:    #ffffff;
+  --panel:        rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text:         #0f172a;
+  --muted:        #475569;
+  --accent:       #2563eb;
+  --accent-2:     #d97706;
+  --accent-3:     #7c3aed;
+  --accent-glow:  rgba(37, 99, 235, 0.28);
+  --danger:       #ef4444;
+  --line:         rgba(15, 23, 42, 0.12);
+  --shadow:       0 18px 60px rgba(37, 99, 235, 0.14);
+  --blob-1:       rgba(37, 99, 235, 0.12);
+  --blob-2:       rgba(217, 119, 6, 0.14);
+  --blob-3:       rgba(124, 58, 237, 0.10);
+  --glow-l:       #2563eb;
+  --glow-r:       #d97706;
+}
+:root[data-palette='midnight'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg:           #010614;
+  --bg-strong:    #050d24;
+  --panel:        rgba(5, 13, 36, 0.80);
+  --panel-strong: rgba(5, 13, 36, 0.95);
+  --text:         #e2e8f0;
+  --muted:        #7a92b8;
+  --accent:       #60a5fa;
+  --accent-2:     #fbbf24;
+  --accent-3:     #a78bfa;
+  --accent-glow:  rgba(96, 165, 250, 0.28);
+  --danger:       #f87171;
+  --line:         rgba(255, 255, 255, 0.07);
+  --shadow:       0 18px 60px rgba(0, 0, 0, 0.55);
+  --blob-1:       rgba(96, 165, 250, 0.12);
+  --blob-2:       rgba(251, 191, 36, 0.10);
+  --blob-3:       rgba(167, 139, 250, 0.08);
+  --glow-l:       #1d4ed8;
+  --glow-r:       #b45309;
+}
+
+/* ── 7. CRIMSON | Red × Amber ── */
+:root[data-palette='crimson'] {
+  color-scheme: light;
+  --bg:           #fff5f5;
+  --bg-strong:    #ffffff;
+  --panel:        rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text:         #1a0505;
+  --muted:        #7c2d2d;
+  --accent:       #ef4444;
+  --accent-2:     #f97316;
+  --accent-3:     #fbbf24;
+  --accent-glow:  rgba(239, 68, 68, 0.28);
+  --danger:       #dc2626;
+  --line:         rgba(26, 5, 5, 0.12);
+  --shadow:       0 18px 60px rgba(239, 68, 68, 0.14);
+  --blob-1:       rgba(239, 68, 68, 0.13);
+  --blob-2:       rgba(249, 115, 22, 0.15);
+  --blob-3:       rgba(251, 191, 36, 0.10);
+  --glow-l:       #ef4444;
+  --glow-r:       #f97316;
+}
+:root[data-palette='crimson'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg:           #1a0505;
+  --bg-strong:    #2a0808;
+  --panel:        rgba(42, 8, 8, 0.80);
+  --panel-strong: rgba(42, 8, 8, 0.95);
+  --text:         #fee2e2;
+  --muted:        #c07070;
+  --accent:       #f87171;
+  --accent-2:     #fb923c;
+  --accent-3:     #fde68a;
+  --accent-glow:  rgba(248, 113, 113, 0.28);
+  --danger:       #fca5a5;
+  --line:         rgba(255, 255, 255, 0.08);
+  --shadow:       0 18px 60px rgba(0, 0, 0, 0.50);
+  --blob-1:       rgba(248, 113, 113, 0.14);
+  --blob-2:       rgba(251, 146, 60, 0.12);
+  --blob-3:       rgba(253, 230, 138, 0.08);
+  --glow-l:       #991b1b;
+  --glow-r:       #c2410c;
+}

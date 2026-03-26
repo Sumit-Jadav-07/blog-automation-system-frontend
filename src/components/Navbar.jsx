@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Moon, Sparkles, Sun, X } from "lucide-react";
 import clsx from "clsx";
 import { useTheme } from "../context/ThemeContext";
+import ThemeSwitcher from "./ThemeSwitcher";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -48,6 +49,8 @@ export default function Navbar() {
           <button className="icon-button hamburger" onClick={() => setOpen((p) => !p)} aria-label="Toggle menu">
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
+
+          <ThemeSwitcher />
         </div>
       </nav>
 

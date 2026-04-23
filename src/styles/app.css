@@ -69,6 +69,8 @@ input {
 
 .primary-button {
   display: inline-flex;
+  height: 50px;
+  width: 180px;
   align-items: center;
   gap: 8px;
   padding: 12px 18px;
@@ -435,6 +437,22 @@ input {
   color: var(--accent);
   font-weight: 600;
   text-decoration: none;
+}
+
+.status-info {
+  color: var(--color-info);
+}
+
+.status-warning {
+  color: var(--color-warning);
+}
+
+.status-success {
+  color: var(--color-success);
+}
+
+.status-error {
+  color: var(--color-error);
 }
 
 @keyframes shimmer {

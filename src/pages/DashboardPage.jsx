@@ -8,6 +8,7 @@ import "./DashboardPage.css";
 
 export default function DashboardPage() {
   const [topic, setTopic] = useState("");
+  const [platform, setPlatform] = useState("DevTo");
   const [blogs, setBlogs] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -30,11 +31,25 @@ export default function DashboardPage() {
 
   async function handleGenerate(event) {
     event.preventDefault();
+
+    // Check if the selected platform is marked as coming soon and show a toast if so, without proceeding to generation
+    // const selectedPlatformObj = PLATFORM_OPTIONS.find((p) => p.value === platform);
+    // if (selectedPlatformObj?.status === "coming-soon") {
+    //   toast.info(`${selectedPlatformObj.label} integration is coming soon! 🚀`, {
+    //     duration: 4000,
+    //     style: {
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   });
+    //   return;
+    // }
+
     setLoading(true);
 
     const toastId = toast.loading("Generating blog...");
     try {
-      const response = await generateBlog(topic);
+      const response = await generateBlog(topic, platform);
       if (response && response.blog) {
         const blog = response.blog;
         setBlogs((prev) => [blog, ...prev]);
@@ -114,7 +129,9 @@ export default function DashboardPage() {
           <div className="left-column">
             <BlogForm
               topic={topic}
+              platform={platform}
               onTopicChange={setTopic}
+              onPlatformChange={setPlatform}
               onSubmit={handleGenerate}
               loading={loading}
             />

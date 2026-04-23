@@ -1,4 +1,15 @@
 /* ================================================================
+   Semantic Status Colors (Works for ALL palettes + themes)
+================================================================ */
+
+:root {
+  --color-info: var(--accent-2);
+  --color-success: #22c55e;
+  --color-warning: var(--accent-3);
+  --color-error: var(--danger);
+}
+
+/* ================================================================
    7 Color Palettes — Light + Dark har ek ke liye
    Usage: document.documentElement.setAttribute('data-palette','ocean')
 ================================================================ */
@@ -388,4 +399,254 @@
   --radius-pill: 0px;
   --shadow: 0 18px 60px rgba(99, 102, 241, 0.14);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* ── 8. LAVENDER | Lavender × Indigo ── */
+:root[data-palette='lavender'] {
+  color-scheme: light;
+  --bg: #faf5ff;
+  --bg-strong: #ffffff;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text: #2d1b4e;
+  --muted: #6b5b95;
+  --accent: #b78bdb;
+  --accent-2: #7c3aed;
+  --accent-3: #6366f1;
+  --accent-glow: rgba(183, 139, 219, 0.28);
+  --danger: #dc2626;
+  --line: rgba(45, 27, 78, 0.12);
+  --shadow: 0 18px 60px rgba(183, 139, 219, 0.14);
+  --blob-1: rgba(183, 139, 219, 0.13);
+  --blob-2: rgba(124, 58, 237, 0.15);
+  --blob-3: rgba(99, 102, 241, 0.10);
+  --glow-l: #b78bdb;
+  --glow-r: #7c3aed;
+  --radius-card: 0px;
+  --radius-btn: 0px;
+  --radius-pill: 0px;
+  --shadow: 0 18px 60px rgba(99, 102, 241, 0.14);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-palette='lavender'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #1a0f2e;
+  --bg-strong: #2d1b4e;
+  --panel: rgba(45, 27, 78, 0.80);
+  --panel-strong: rgba(45, 27, 78, 0.95);
+  --text: #e9d5ff;
+  --muted: #b29cc9;
+  --accent: #d8b4fe;
+  --accent-2: #a78bfa;
+  --accent-3: #818cf8;
+  --accent-glow: rgba(216, 180, 254, 0.28);
+  --danger: #f87171;
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.50);
+  --blob-1: rgba(216, 180, 254, 0.12);
+  --blob-2: rgba(167, 139, 250, 0.10);
+  --blob-3: rgba(129, 140, 248, 0.08);
+  --glow-l: #6d28d9;
+  --glow-r: #4c1d95;
+  --radius-card: 0px;
+  --radius-btn: 0px;
+  --radius-pill: 0px;
+  --shadow: 0 18px 60px rgba(99, 102, 241, 0.14);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* ── 9. MONSOON | Slate × Cyan ── */
+:root[data-palette='monsoon'] {
+  color-scheme: light;
+  --bg: #f8fafc;
+  --bg-strong: #ffffff;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --text: #1e293b;
+  --muted: #64748b;
+  --accent: #0891b2;
+  --accent-2: #06b6d4;
+  --accent-3: #2dd4bf;
+  --accent-glow: rgba(8, 145, 178, 0.28);
+  --danger: #dc2626;
+  --line: rgba(30, 41, 59, 0.12);
+  --shadow: 0 18px 60px rgba(8, 145, 178, 0.14);
+  --blob-1: rgba(8, 145, 178, 0.13);
+  --blob-2: rgba(6, 182, 212, 0.15);
+  --blob-3: rgba(45, 212, 191, 0.10);
+  --glow-l: #0891b2;
+  --glow-r: #2dd4bf;
+  --radius-card: 0px;
+  --radius-btn: 0px;
+  --radius-pill: 0px;
+  --shadow: 0 18px 60px rgba(99, 102, 241, 0.14);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-palette='monsoon'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --bg-strong: #1e293b;
+  --panel: rgba(30, 41, 59, 0.80);
+  --panel-strong: rgba(30, 41, 59, 0.95);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #06b6d4;
+  --accent-2: #22d3ee;
+  --accent-3: #2dd4bf;
+  --accent-glow: rgba(6, 182, 212, 0.28);
+  --danger: #f87171;
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.50);
+  --blob-1: rgba(6, 182, 212, 0.12);
+  --blob-2: rgba(34, 211, 238, 0.10);
+  --blob-3: rgba(45, 212, 191, 0.08);
+  --glow-l: #0e7490;
+  --glow-r: #0d9488;
+  --radius-card: 0px;
+  --radius-btn: 0px;
+  --radius-pill: 0px;
+  --shadow: 0 18px 60px rgba(99, 102, 241, 0.14);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* ── 10. EMBER | Deep Gold × Obsidian ── */
+:root[data-palette='ember'] {
+  color-scheme: light;
+  --bg: #fffcf0;
+  --bg-strong: #ffffff;
+  --panel: rgba(255, 255, 255, 0.75);
+  --text: #3d2b1f;
+  --muted: #856d5d;
+  --accent: #d97706;
+  --accent-2: #b45309;
+  --accent-3: #78350f;
+  --accent-glow: rgba(217, 119, 6, 0.2);
+  --line: rgba(61, 43, 31, 0.1);
+  --glow-l: #f59e0b;
+  --glow-r: #d97706;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+
+:root[data-palette='ember'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0c0a09;
+  --bg-strong: #1c1917;
+  --panel: rgba(28, 25, 23, 0.85);
+  --text: #fef3c7;
+  --muted: #a8a29e;
+  --accent: #fbbf24;
+  --accent-2: #f59e0b;
+  --accent-3: #d97706;
+  --accent-glow: rgba(251, 191, 36, 0.25);
+  --line: rgba(255, 255, 255, 0.08);
+  --glow-l: #78350f;
+  --glow-r: #451a03;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+
+/* ── 11. NEBULA | Cosmic Pink × Violet ── */
+:root[data-palette='nebula'] {
+  color-scheme: light;
+  --bg: #fff5fb;
+  --bg-strong: #ffffff;
+  --panel: rgba(255, 252, 254, 0.75);
+  --text: #4a1d3d;
+  --muted: #8b5d7d;
+  --accent: #db2777;
+  --accent-2: #be185d;
+  --accent-3: #701a75;
+  --accent-glow: rgba(219, 39, 119, 0.2);
+  --line: rgba(74, 29, 61, 0.1);
+  --glow-l: #f472b6;
+  --glow-r: #db2777;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+
+:root[data-palette='nebula'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #1e0720;
+  --bg-strong: #2d0d31;
+  --panel: rgba(45, 13, 49, 0.85);
+  --text: #fdf2f8;
+  --muted: #c084fc;
+  --accent: #f472b6;
+  --accent-2: #e879f9;
+  --accent-3: #a855f7;
+  --accent-glow: rgba(244, 114, 182, 0.25);
+  --line: rgba(255, 255, 255, 0.08);
+  --glow-l: #701a75;
+  --glow-r: #4a044e;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+
+/* ── 12. MINT | Sage × Forest ── */
+:root[data-palette='mint'] {
+  color-scheme: light;
+  --bg: #f2fdf5;
+  --bg-strong: #ffffff;
+  --panel: rgba(255, 255, 255, 0.75);
+  --text: #163020;
+  --muted: #527853;
+  --accent: #10b981;
+  --accent-2: #059669;
+  --accent-3: #064e3b;
+  --accent-glow: rgba(16, 185, 129, 0.2);
+  --line: rgba(22, 48, 32, 0.1);
+  --glow-l: #34d399;
+  --glow-r: #10b981;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+
+:root[data-palette='mint'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #051610;
+  --bg-strong: #0d251c;
+  --panel: rgba(13, 37, 28, 0.85);
+  --text: #ecfdf5;
+  --muted: #6ee7b7;
+  --accent: #34d399;
+  --accent-2: #10b981;
+  --accent-3: #059669;
+  --accent-glow: rgba(52, 211, 153, 0.25);
+  --line: rgba(255, 255, 255, 0.08);
+  --glow-l: #064e3b;
+  --glow-r: #022c22;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+
+/* ── 13. OBSIDIAN ICE | Slate × Indigo (The Ultimate) ── */
+:root[data-palette='obsidian-ice'] {
+  color-scheme: light;
+  --bg: #fcfdfe;
+  --bg-strong: #ffffff;
+  --panel: rgba(255, 255, 255, 0.75);
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #6366f1; /* Indigo */
+  --accent-2: #4f46e5;
+  --accent-3: #1e293b;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --line: rgba(15, 23, 42, 0.08);
+  --glow-l: #818cf8;
+  --glow-r: #6366f1;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
+}
+
+:root[data-palette='obsidian-ice'][data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b0f1a; /* Deep Midnight */
+  --bg-strong: #111827;
+  --panel: rgba(17, 24, 39, 0.85);
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #818cf8;
+  --accent-2: #a5b4fc;
+  --accent-3: #c7d2fe;
+  --accent-glow: rgba(129, 140, 248, 0.25);
+  --line: rgba(255, 255, 255, 0.06);
+  --glow-l: #1e293b;
+  --glow-r: #312e81;
+  --radius-card: 0px; --radius-btn: 0px; --radius-pill: 0px;
 }

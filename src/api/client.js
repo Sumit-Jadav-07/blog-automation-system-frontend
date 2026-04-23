@@ -6,10 +6,10 @@
  * the API token from our .env file to every request.
  *
  * Functions:
- *   fetchBlogs()       → Get the list of all blogs
- *   fetchBlog(id)      → Get a single blog by its ID
- *   generateBlog(topic)→ Ask the AI to create a new blog about a topic
- *   deleteBlog(id)     → Permanently delete a blog
+ *   fetchBlogs() -> Get the list of all blogs
+ *   fetchBlog(id) -> Get a single blog by its ID
+ *   generateBlog(topic, platform) -> Ask the AI to create a new blog about a topic for a platform
+ *   deleteBlog(id) -> Permanently delete a blog
  */
 
 import axios from "axios";
@@ -37,9 +37,13 @@ export async function fetchBlog(blogId) {
   return data;
 }
 
-// Ask the AI pipeline to generate a new blog from a topic
-export async function generateBlog(topic) {
-  const { data } = await api.post(`/blogs/generate?topic=${encodeURIComponent(topic)}`);
+// Ask the AI pipeline to generate a new blog from a topic and target platform
+export async function generateBlog(topic, platform) {
+  const params = new URLSearchParams({
+    topic,
+    platform,
+  });
+  const { data } = await api.post(`/blogs/generate?${params.toString()}`);
   return data;
 }
 

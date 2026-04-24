@@ -108,7 +108,7 @@ export default function DashboardPage() {
               Generate topics, preview Medium-ready drafts, and keep a living history in one sleek workspace.
             </p>
             <div className="chip-row">
-              <span className="chip">Research → Write -> SEO -> Edit -> Publish</span>
+              <span className="chip">Research &rarr; Write &rarr; SEO &rarr; Edit &rarr; Publish</span>
               <span className="chip">1-click preview</span>
               {/* <span className="chip">Dark / Light</span> */}
             </div>

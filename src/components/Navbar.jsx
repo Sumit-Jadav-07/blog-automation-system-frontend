@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Moon, Sparkles, Sun, X } from "lucide-react";
+import { Menu, Moon, Sparkles, Sun, X, LogOut, User } from "lucide-react";
 import clsx from "clsx";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 import ThemeSwitcher from "./ThemeSwitcher";
 import "./Navbar.css";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const { isAuthenticated, user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setOpen(false);
@@ -18,6 +21,11 @@ export default function Navbar() {
 
   const linkClass = ({ isActive }) =>
     clsx("nav-link", isActive && "nav-link-active");
+
+  function handleLogout() {
+    logout();
+    navigate("/login", { replace: true });
+  }
 
   return (
     <header className="navbar-shell">
@@ -31,15 +39,30 @@ export default function Navbar() {
 
         <div className="navbar-right">
           <div className="navbar-links">
-            <NavLink to="/" end className={linkClass}>
-              Dashboard
-            </NavLink>
-            <NavLink to="/login" className={linkClass}>
-              Login
-            </NavLink>
-            <NavLink to="/signup" className={linkClass}>
-              Sign Up
-            </NavLink>
+            {isAuthenticated ? (
+              <>
+                <NavLink to="/" end className={linkClass}>
+                  Dashboard
+                </NavLink>
+                <div className="nav-user-info">
+                  <User size={15} />
+                  <span className="nav-user-name">{user?.fullName?.split(" ")[0] || "User"}</span>
+                </div>
+                <button className="nav-link logout-btn" onClick={handleLogout}>
+                  <LogOut size={15} />
+                  <span>Logout</span>
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login" className={linkClass}>
+                  Login
+                </NavLink>
+                <NavLink to="/signup" className={linkClass}>
+                  Sign Up
+                </NavLink>
+              </>
+            )}
           </div>
 
           <button className="icon-button theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
@@ -64,15 +87,30 @@ export default function Navbar() {
             transition={{ duration: 0.18 }}
           >
             <div className="mobile-links">
-              <NavLink to="/" end className={linkClass}>
-                Dashboard
-              </NavLink>
-              <NavLink to="/login" className={linkClass}>
-                Login
-              </NavLink>
-              <NavLink to="/signup" className={linkClass}>
-                Sign Up
-              </NavLink>
+              {isAuthenticated ? (
+                <>
+                  <NavLink to="/" end className={linkClass}>
+                    Dashboard
+                  </NavLink>
+                  <div className="nav-user-info mobile-user-info">
+                    <User size={15} />
+                    <span className="nav-user-name">{user?.fullName || "User"}</span>
+                  </div>
+                  <button className="nav-link logout-btn" onClick={handleLogout}>
+                    <LogOut size={15} />
+                    <span>Logout</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <NavLink to="/login" className={linkClass}>
+                    Login
+                  </NavLink>
+                  <NavLink to="/signup" className={linkClass}>
+                    Sign Up
+                  </NavLink>
+                </>
+              )}
             </div>
           </motion.div>
         )}

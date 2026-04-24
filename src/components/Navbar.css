@@ -97,6 +97,55 @@
   transform: scaleX(1);
 }
 
+/* ── User Info (logged in) ── */
+.nav-user-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    color-mix(in srgb, var(--accent-2) 8%, transparent)
+  );
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.88rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.nav-user-name {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.88rem;
+}
+
+.logout-btn::after {
+  display: none;
+}
+
+.logout-btn:hover {
+  color: var(--danger, #ef4444) !important;
+  background: color-mix(in srgb, var(--danger, #ef4444) 10%, transparent) !important;
+}
+
+.mobile-user-info {
+  justify-content: flex-start;
+  width: 100%;
+}
+
 .hamburger {
   display: none;
 }

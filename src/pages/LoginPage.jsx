@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
+import { loginUser } from "../api/client";
 import "./AuthPages.css";
 
 const FEATURES = [
@@ -15,10 +17,46 @@ const FEATURES = [
 export default function LoginPage() {
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading]   = useState(false);
+  const navigate = useNavigate();
+  const auth = useAuth();
 
-  function handleSubmit(e) {
+  // If already logged in, redirect to dashboard
+  if (auth.isAuthenticated) {
+    navigate("/", { replace: true });
+    return null;
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    toast.success("Login UI only — connect auth when ready.");
+    setLoading(true);
+
+    try {
+      const response = await loginUser(email, password);
+      auth.login(response);
+      toast.success(`Welcome back, ${response.fullName}!`);
+      navigate("/", { replace: true });
+    } catch (err) {
+      const msg =
+        err?.response?.data?.message ||
+        err?.response?.data?.error ||
+        err?.message ||
+        "Login failed. Please try again.";
+
+      // Check if account is not verified
+      if (err?.response?.status === 403 || msg.includes("USER_NOT_VERIFIED") || msg.toLowerCase().includes("verify")) {
+        sessionStorage.setItem("signup_email", email);
+        sessionStorage.setItem("signup_step", "otp");
+        toast.error("A new OTP has been sent. Please verify your email first. Redirecting...");
+        setTimeout(() => navigate("/signup"), 1500);
+      } else if (msg.includes("INVALID_CREDENTIALS")) {
+        toast.error("Invalid email or password.");
+      } else {
+        toast.error(msg);
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -76,6 +114,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
             </div>
 
@@ -89,15 +128,23 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                disabled={loading}
               />
+            </div>
+
+            <div className="auth-extras">
+              <Link to="/forgot-password" className="forgot-link">
+                Forgot Password?
+              </Link>
             </div>
 
             <button
               className="primary-button auth-button"
               type="submit"
-              disabled={!email.trim() || !password.trim()}
+              disabled={loading || !email.trim() || !password.trim()}
             >
-              Log In
+              {loading ? <Loader2 className="spinner" size={18} /> : null}
+              {loading ? "Signing In..." : "Log In"}
             </button>
           </form>
 

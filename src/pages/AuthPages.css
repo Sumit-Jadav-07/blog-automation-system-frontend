@@ -156,6 +156,64 @@
   font-size: 0.85rem;
 }
 
+/* ── Auth Extras (Forgot Password, OTP, Back) ── */
+.auth-extras {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -4px;
+  margin-bottom: 4px;
+}
+
+.forgot-link {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: var(--accent);
+}
+
+.otp-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.back-to-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  width: fit-content;
+}
+
+.back-to-step:hover {
+  color: var(--text);
+}
+
+.otp-input {
+  text-align: center;
+  letter-spacing: 0.5em;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .auth-brand {

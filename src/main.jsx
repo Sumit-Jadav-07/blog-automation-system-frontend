@@ -13,26 +13,29 @@ import { Toaster } from "react-hot-toast";
 import App from "./App";
 import "./styles/app.css";
 import { ThemeProvider } from "./context/ThemeContext";
+import { AuthProvider } from "./context/AuthContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            className: "toast-shell",
-            style: {
-              background: "var(--panel-strong)",
-              color: "var(--text)",
-              border: "1px solid var(--line)",
-              borderRadius: "999px",
-              boxShadow: "var(--shadow)",
-            },
-          }}
-        />
-        <App />
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              className: "toast-shell",
+              style: {
+                background: "var(--panel-strong)",
+                color: "var(--text)",
+                border: "1px solid var(--line)",
+                borderRadius: "999px",
+                boxShadow: "var(--shadow)",
+              },
+            }}
+          />
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
 );
